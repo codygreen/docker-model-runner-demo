@@ -17,6 +17,9 @@ services:
     command: sleep infinity 
     environment:
       - MODEL_HOST=http://model-runner.docker.internal
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
     image: postgres:latest
@@ -27,6 +30,11 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
   
 volumes:
   db_data:
