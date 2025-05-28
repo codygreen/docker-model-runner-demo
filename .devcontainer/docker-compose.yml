@@ -17,6 +17,7 @@ services:
     command: sleep infinity 
     environment:
       - MODEL_HOST=http://model-runner.docker.internal
+      - MODEL_PATH_PREFIX=/engines/llama.cpp
     depends_on:
       db:
         condition: service_healthy

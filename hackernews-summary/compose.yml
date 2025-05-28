@@ -5,6 +5,7 @@ services:
       context: .  # Build the app image from the current directory
     environment:
       - MODEL_HOST=http://model-runner.docker.internal  # Set environment variable for model host
+      - MODEL_PATH_PREFIX=/engines/llama.cpp  # Set environment variable for model path prefix
     network_mode: service:db  # Share network stack with the db service
     restart: "no"  # Do not restart the container automatically
     depends_on:

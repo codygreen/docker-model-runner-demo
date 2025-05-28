@@ -10,7 +10,8 @@ def summarize_with_gemma3(content):
         return "No content to summarize."
 
     api_host = os.getenv("MODEL_HOST", "http://localhost:12434")
-    api_url = f"{api_host}/engines/llama.cpp/v1/chat/completions"
+    api_path_prefix = os.getenv("MODEL_PATH_PREFIX", "")
+    api_url = f"{api_host}{api_path_prefix}/v1/chat/completions"
     headers = {"Content-Type": "application/json"}
     data = {
         "model": "ai/gemma3:4B-Q4_K_M",
