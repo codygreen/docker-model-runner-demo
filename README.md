@@ -99,7 +99,7 @@ docker compose up --build --exit-code-from app
 
 The app will process stories and exit when done.
 
-## Clean Up
+### Clean Up
 
 Remove containers and models:
 
